@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 4: Automatic Video Transitions Using Keyframes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #444;
+        }
+        h3 {
+            color: #555;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 10px 0;
+        }
+        .caption {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .image-item {
+            text-align: center;
+        }
+        .image-item img {
+            display: block;
+            margin: 0 auto;
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+        }
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #888;
+            margin: 20px 0;
+        }
+        .video-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .video-container video {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chapter 4: Automatic Video Transitions Using Keyframes</h1>
+
+    <h2>Overview</h2>
+    <p>This chapter demonstrates how the system can take a series of product images and automatically generate a smooth video with transitions between them. Each input image acts as a keyframe, and the system interpolates fluid transitions to produce a polished video output.</p>
+
+    <h2>Input Keyframes</h2>
+
+    <div class="image-grid">
+
+        <div class="image-item">
+            <img src="Out3_1.png" alt="Keyframe 1">
+            <p class="caption"><strong>Out3_1.png</strong> — Keyframe 1</p>
+        </div>
+
+        <div class="image-item">
+            <img src="Out3_2.png" alt="Keyframe 2">
+            <p class="caption"><strong>Out3_2.png</strong> — Keyframe 2</p>
+        </div>
+
+        <div class="image-item">
+            <img src="Out3_3.png" alt="Keyframe 3">
+            <p class="caption"><strong>Out3_3.png</strong> — Keyframe 3</p>
+        </div>
+
+        <div class="image-item">
+            <img src="Out3_4.png" alt="Keyframe 4">
+            <p class="caption"><strong>Out3_4.png</strong> — Keyframe 4</p>
+        </div>
+
+    </div>
+
+    <div class="arrow">⬇</div>
+
+    <h2>Output Video</h2>
+
+    <div class="video-container">
+        <video id="slowVideo" controls autoplay loop muted>
+            <source src="Vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <p class="caption"><strong>Vid1.mp4</strong> — The final video with automatic transitions between keyframes.</p>
+    </div>
+
+    <script>
+        document.getElementById('slowVideo').playbackRate = 0.5;
+    </script>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li><strong>Input</strong> — Provide a sequence of images as keyframes (e.g., <code>Out3_1.png</code> – <code>Out3_4.png</code>).</li>
+        <li><strong>Keyframe Analysis</strong> — The system analyzes each image to determine optimal transition paths, matching colors, lighting, and composition.</li>
+        <li><strong>Transition Generation</strong> — Smooth intermediate frames are generated between each pair of keyframes to create fluid motion.</li>
+        <li><strong>Output</strong> — A single video file (<code>Vid1.mp4</code>) is produced with seamless transitions across all keyframes.</li>
+    </ol>
+
+</body>
+</html>

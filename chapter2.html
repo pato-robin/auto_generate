@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 2: Automatic Generation for Different Aspect Ratios and Orientation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #444;
+        }
+        h3 {
+            color: #555;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 10px 0;
+        }
+        .caption {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+        .output-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .output-item {
+            text-align: center;
+        }
+        .output-item img {
+            display: block;
+            margin: 0 auto;
+        }
+        .aspect-label {
+            display: inline-block;
+            background-color: #f4f4f4;
+            padding: 2px 8px;
+            border-radius: 3px;
+            font-weight: bold;
+            font-size: 0.95em;
+            margin-bottom: 6px;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chapter 2: Automatic Generation for Different Aspect Ratios and Orientation</h1>
+
+    <h2>Overview</h2>
+    <p>This chapter demonstrates how the system can take a single product image and automatically generate background variations at different aspect ratios and orientations. This is essential for producing assets tailored to various platforms and display formats from one source image.</p>
+
+    <h2>Input</h2>
+    <img src="Out1.png" alt="Input Image">
+    <p class="caption"><strong>Out1.png</strong> — The input image used as the base for generating different aspect ratio outputs.</p>
+
+    <h2>Outputs</h2>
+
+    <div class="output-grid">
+
+        <div class="output-item">
+            <span class="aspect-label">16:9</span>
+            <img src="Out2_1.png" alt="16:9 Output">
+            <p class="caption"><strong>Out2_1.png</strong> — 16:9 landscape format.</p>
+        </div>
+
+        <div class="output-item">
+            <span class="aspect-label">21:9</span>
+            <img src="Out2_2.png" alt="21:9 Output">
+            <p class="caption"><strong>Out2_2.png</strong> — 21:9 ultra-wide format.</p>
+        </div>
+
+        <div class="output-item">
+            <span class="aspect-label">32:9</span>
+            <img src="Out2_3.png" alt="32:9 Output">
+            <p class="caption"><strong>Out2_3.png</strong> — 32:9 super ultra-wide format.</p>
+        </div>
+
+        <div class="output-item">
+            <span class="aspect-label">9:21 (Vertical)</span>
+            <img src="Out2_4.png" alt="9:21 Vertical Output">
+            <p class="caption"><strong>Out2_4.png</strong> — 9:21 vertical / portrait format.</p>
+        </div>
+
+    </div>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li><strong>Input</strong> — Provide a product image with a generated background (e.g., <code>Out1.png</code>).</li>
+        <li><strong>Aspect Ratio Selection</strong> — Choose the target aspect ratios: 16:9, 21:9, 32:9, 9:21, etc.</li>
+        <li><strong>Generation</strong> — The system extends or adapts the background to fill the new canvas while keeping the product properly framed.</li>
+        <li><strong>Output</strong> — One image per aspect ratio is produced, ready for use across different platforms and displays.</li>
+    </ol>
+
+</body>
+</html>

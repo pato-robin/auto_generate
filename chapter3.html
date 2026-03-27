@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 3: Automatic Generation for Different Products While Maintaining the Same Theme</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #444;
+        }
+        h3 {
+            color: #555;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 4px;
+            margin: 10px 0;
+        }
+        .caption {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 4px;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .image-item {
+            text-align: center;
+        }
+        .image-item img {
+            display: block;
+            margin: 0 auto;
+        }
+        .image-grid .image-item img.input-img {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+        }
+        .reference-image {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .reference-image img {
+            display: block;
+            margin: 0 auto;
+        }
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #888;
+            margin: 20px 0;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chapter 3: Automatic Generation for Different Products While Maintaining the Same Theme</h1>
+
+    <h2>Overview</h2>
+    <p>This chapter demonstrates how the system can apply a consistent visual theme across multiple different product photos. Given a set of product images and a reference themed output, the system generates new backgrounds for each product that share the same cohesive style.</p>
+
+    <h2>Inputs</h2>
+
+    <h3>Product Photos</h3>
+    <div class="image-grid">
+
+        <div class="image-item">
+            <img src="Orbit1.jpg" alt="Orbit1" class="input-img">
+            <p class="caption"><strong>Orbit1.jpg</strong></p>
+        </div>
+
+        <div class="image-item">
+            <img src="Orbit2.jpg" alt="Orbit2" class="input-img">
+            <p class="caption"><strong>Orbit2.jpg</strong></p>
+        </div>
+
+        <div class="image-item">
+            <img src="Orbit3.jpg" alt="Orbit3" class="input-img">
+            <p class="caption"><strong>Orbit3.jpg</strong></p>
+        </div>
+
+        <div class="image-item">
+            <img src="Orbit4.png" alt="Orbit4" class="input-img">
+            <p class="caption"><strong>Orbit4.png</strong></p>
+        </div>
+
+    </div>
+
+    <h3>Theme Reference</h3>
+    <div class="reference-image">
+        <img src="Out2_4.png" alt="Theme Reference">
+        <p class="caption"><strong>Out2_4.png</strong> — The reference image that defines the target visual theme.</p>
+    </div>
+
+    <div class="arrow">⬇</div>
+
+    <h2>Results</h2>
+
+    <div class="image-grid">
+
+        <div class="image-item">
+            <img src="Out3_1.png" alt="Result 1">
+            <p class="caption"><strong>Out3_1.png</strong> — Orbit1 with themed background.</p>
+        </div>
+
+        <div class="image-item">
+            <img src="Out3_2.png" alt="Result 2">
+            <p class="caption"><strong>Out3_2.png</strong> — Orbit2 with themed background.</p>
+        </div>
+
+        <div class="image-item">
+            <img src="Out3_3.png" alt="Result 3">
+            <p class="caption"><strong>Out3_3.png</strong> — Orbit3 with themed background.</p>
+        </div>
+
+        <div class="image-item">
+            <img src="Out3_4.png" alt="Result 4">
+            <p class="caption"><strong>Out3_4.png</strong> — Orbit4 with themed background.</p>
+        </div>
+
+    </div>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li><strong>Inputs</strong> — Provide multiple product photos (e.g., <code>Orbit1.jpg</code> – <code>Orbit4.jpg</code>) along with a themed reference image (<code>Out2_4.png</code>).</li>
+        <li><strong>Theme Extraction</strong> — The system analyzes the reference image to extract the visual theme: color palette, lighting, mood, and style.</li>
+        <li><strong>Generation</strong> — For each product photo, a new background is generated that matches the extracted theme while adapting to the specific product.</li>
+        <li><strong>Output</strong> — A set of themed images (<code>Out3_1.png</code> – <code>Out3_4.png</code>) is produced, all sharing a cohesive visual identity.</li>
+    </ol>
+
+</body>
+</html>
