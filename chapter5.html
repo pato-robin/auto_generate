@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 5: Text Overlay with Dynamic Pricing</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+        h1 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #444;
+        }
+        ol {
+            padding-left: 20px;
+        }
+        ol li {
+            margin-bottom: 8px;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.95em;
+        }
+
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .controls label {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .controls input {
+            font-size: 1.1em;
+            padding: 8px 12px;
+            border: 2px solid #4a90d9;
+            border-radius: 4px;
+            width: 120px;
+            background-color: #f0f6ff;
+        }
+        .controls input:focus {
+            outline: none;
+            border-color: #2a6cb8;
+            box-shadow: 0 0 6px rgba(74, 144, 217, 0.4);
+        }
+        .hint {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+
+        .video-wrapper {
+            position: relative;
+            display: inline-block;
+            width: 50%;
+            margin-top: 20px;
+        }
+        .video-wrapper video {
+            width: 100%;
+            display: block;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .overlay-zone {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .price-text {
+            color: #fff;
+            font-size: 6.25em;
+            font-weight: bold;
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.8);
+            opacity: 0;
+            position: absolute;
+            text-align: center;
+            line-height: 1.1;
+        }
+
+        /* Transition: Fade */
+        @keyframes fadeIn {
+            0%   { opacity: 0; }
+            15%  { opacity: 1; }
+            85%  { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        /* Transition: Slide Up */
+        @keyframes slideUp {
+            0%   { opacity: 0; transform: translateY(60px); }
+            15%  { opacity: 1; transform: translateY(0); }
+            85%  { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(-60px); }
+        }
+        /* Transition: Slide Down */
+        @keyframes slideDown {
+            0%   { opacity: 0; transform: translateY(-60px); }
+            15%  { opacity: 1; transform: translateY(0); }
+            85%  { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(60px); }
+        }
+        /* Transition: Zoom In */
+        @keyframes zoomIn {
+            0%   { opacity: 0; transform: scale(0.3); }
+            15%  { opacity: 1; transform: scale(1); }
+            85%  { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(1.3); }
+        }
+        /* Transition: Slide Left */
+        @keyframes slideLeft {
+            0%   { opacity: 0; transform: translateX(100px); }
+            15%  { opacity: 1; transform: translateX(0); }
+            85%  { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(-100px); }
+        }
+        /* Transition: Slide Right */
+        @keyframes slideRight {
+            0%   { opacity: 0; transform: translateX(-100px); }
+            15%  { opacity: 1; transform: translateX(0); }
+            85%  { opacity: 1; transform: translateX(0); }
+            100% { opacity: 0; transform: translateX(100px); }
+        }
+        /* Transition: Rotate In */
+        @keyframes rotateIn {
+            0%   { opacity: 0; transform: rotate(-15deg) scale(0.5); }
+            15%  { opacity: 1; transform: rotate(0deg) scale(1); }
+            85%  { opacity: 1; transform: rotate(0deg) scale(1); }
+            100% { opacity: 0; transform: rotate(15deg) scale(0.5); }
+        }
+        /* Transition: Blur In */
+        @keyframes blurIn {
+            0%   { opacity: 0; filter: blur(20px); }
+            15%  { opacity: 1; filter: blur(0); }
+            85%  { opacity: 1; filter: blur(0); }
+            100% { opacity: 0; filter: blur(20px); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Chapter 5: Text Overlay with Dynamic Pricing</h1>
+
+    <h2>Overview</h2>
+    <p>This chapter demonstrates dynamic text overlays on video content. A pricing message appears and disappears with random animated transitions, updating in real time as the price value is changed.</p>
+
+    <div class="video-wrapper">
+        <video id="bgVideo" autoplay loop muted>
+            <source src="Vid1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="overlay-zone">
+            <div class="price-text" id="priceOverlay"></div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <label for="priceInput">Price:</label>
+        <input type="text" id="priceInput" value="2,99" placeholder="Enter price">
+        <span class="hint">✏️ Change this value to see it update in the video overlay</span>
+    </div>
+
+    <h2>How It Works</h2>
+    <ol>
+        <li><strong>Video Playback</strong> — The video plays automatically in a loop at 50% speed.</li>
+        <li><strong>Price Input</strong> — Enter any price value in the input field above.</li>
+        <li><strong>Dynamic Overlay</strong> — Every 5 seconds, the text <em>"por solo [price]€"</em> appears with a random transition animation in the bottom 30% of the video frame.</li>
+        <li><strong>Live Updates</strong> — Changing the price value is reflected the next time the text appears.</li>
+        <li><strong>Backend Integration</strong> — In a production environment, the price can be dynamically fetched from a backend system (e.g., an API, CMS, or pricing engine), enabling real-time updates based on promotions, stock levels, user segments, or regional pricing — without any manual intervention.</li>
+    </ol>
+
+    <script>
+        const video = document.getElementById('bgVideo');
+        video.playbackRate = 0.5;
+
+        const priceInput = document.getElementById('priceInput');
+        const priceOverlay = document.getElementById('priceOverlay');
+
+        const animations = [
+            'fadeIn',
+            'slideUp',
+            'slideDown',
+            'zoomIn',
+            'slideLeft',
+            'slideRight',
+            'rotateIn',
+            'blurIn'
+        ];
+
+        function getRandomAnimation() {
+            return animations[Math.floor(Math.random() * animations.length)];
+        }
+
+        function showPrice() {
+            const price = priceInput.value || '0';
+            priceOverlay.innerHTML = 'por solo<br>' + price + '€';
+
+            priceOverlay.style.animation = 'none';
+            priceOverlay.offsetHeight; /* trigger reflow */
+
+            const anim = getRandomAnimation();
+            priceOverlay.style.animation = anim + ' 5s ease forwards';
+        }
+
+        showPrice();
+        setInterval(showPrice, 5000);
+    </script>
+
+</body>
+</html>
